@@ -1,0 +1,6 @@
+composer.phar
+composer.lock
+
+
+# Ignore build files
+.idea/
