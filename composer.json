@@ -2,7 +2,8 @@
 	"name": "lbarulski/docplanner-sdk",
 	"require": {
 		"php": ">=5.4",
-		"guzzle/guzzle": "*"
+		"guzzle/guzzle": "3.3.*@dev",
+		"guzzle/plugin-oauth": "3.3.*@dev"
 	},
 	"authors": [
 		{
