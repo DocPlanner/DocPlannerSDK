@@ -1,0 +1,39 @@
+{
+	"name": "DocPlannerSDK",
+	"apiVersion": "*",
+	"baseUrl": "http://local.znanylekarz.pl/api/",
+	"description": "DocPlanner SDK",
+	"operations": {
+		"DoctorCategories": {
+			"httpMethod": "GET",
+			"uri": "?method=doctor.categories",
+			"summary": "Gets a list of categories"
+		},
+		"DoctorCanAddOpinion": {
+			"httpMethod": "POST",
+			"uri": "?method=doctor.canAddOpinion",
+			"summary": "Can add opinion",
+			"parameters": {
+				"doctor_id": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"UserRequestAccess": {
+			"httpMethod": "POST",
+			"uri": "?method=user.requestAccess",
+			"summary": "Returns access token",
+			"parameters": {
+				"email": {
+					"location": "postField",
+					"type": "string"
+				},
+				"pass": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

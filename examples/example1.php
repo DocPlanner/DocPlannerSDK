@@ -5,7 +5,7 @@
  */
 require_once('../vendor/autoload.php');
 
-$dp = new \DocPlanner\SDK\DocPlannerSDK('ConsumerKey', 'ConsumerSecret', 'http://www.znanylekarz.pl/serviceDescription.json');
+$dp = new \DocPlanner\SDK\DocPlannerSDK('ConsumerKey', 'ConsumerSecret');
 
-$result = $dp->execute('DoctorCategories');
+$result = $dp->doctor()->categories();
 var_dump($result);

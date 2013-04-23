@@ -3,7 +3,8 @@
 	"require": {
 		"php": ">=5.4",
 		"guzzle/guzzle": "3.3.*@dev",
-		"guzzle/plugin-oauth": "3.3.*@dev"
+		"guzzle/plugin-oauth": "3.3.*@dev",
+		"symfony/http-foundation": "2.3.*@dev"
 	},
 	"authors": [
 		{

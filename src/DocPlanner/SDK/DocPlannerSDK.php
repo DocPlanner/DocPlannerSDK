@@ -1,110 +1,80 @@
 <?php
 /**
  * Author: Łukasz Barulski
- * Date: 22.04.13 15:13
+ * Date: 23.04.13 17:37
  */
 namespace DocPlanner\SDK;
 
-use DocPlanner\SDK\ServiceDescription\DocPlanner;
-use Guzzle\Service\Client;
-use Guzzle\Plugin\Oauth\OauthPlugin;
-use Guzzle\Service\Description\ServiceDescription;
+use DocPlanner\SDK\Base\BaseSDK;
+use DocPlanner\SDK\Core\Doctor;
+use DocPlanner\SDK\Core\User;
+use DocPlanner\SDK\Core\Visit;
 
-/**
- * Class DocPlannerSDK
- * @package DocPlanner\SDK
- */
 class DocPlannerSDK
 {
 	/**
-	 * @var string
+	 * @var Doctor
 	 */
-	protected $consumerKey;
+	protected $doctor;
 
 	/**
-	 * @var string
+	 * @var User
 	 */
-	protected $consumerSecret;
+	protected $user;
 
 	/**
-	 * @var string
+	 * @var Visit
 	 */
-	protected $serviceDescriptionUrl;
+	protected $visit;
 
 	/**
-	 * @var string|null
+	 * @var BaseSDK
 	 */
-	protected $token;
-
-	/**
-	 * @var string|null
-	 */
-	protected $tokenSecret;
-
-	/**
-	 * @var \Guzzle\Service\Client
-	 */
-	protected $client;
+	protected $baseSDK;
 
 	/**
 	 * @param string $consumerKey
 	 * @param string $consumerSecret
-	 * @param string $serviceDescriptionUrl
 	 */
-	public function __construct($consumerKey, $consumerSecret, $serviceDescriptionUrl)
+	public function __construct($consumerKey, $consumerSecret)
 	{
-		$this->client = new Client();
-		$this->consumerKey = $consumerKey;
-		$this->consumerSecret = $consumerSecret;
-		$this->serviceDescriptionUrl = $serviceDescriptionUrl;
-		$this->client->addSubscriber($this->_getOauthPlugin());
-		$this->client->setDescription($this->_getServiceDescription());
+		$this->baseSDK = new BaseSDK($consumerKey, $consumerSecret);
 	}
 
 	/**
-	 * @param string|null $token
-	 * @param string|null $tokenSecret
-	 *
-	 * @return void
+	 * @return Doctor
 	 */
-	public function setToken($token, $tokenSecret)
+	public function doctor()
 	{
-		$this->token = $token;
-		$this->tokenSecret = $tokenSecret;
-		$this->client->addSubscriber($this->_getOauthPlugin());
+		if (null === $this->doctor)
+		{
+			$this->doctor = new Doctor($this->baseSDK);
+		}
+		return $this->doctor;
 	}
 
 	/**
-	 * @param       $method
-	 * @param array $params
-	 *
-	 * @return array|mixed
+	 * @return User
 	 */
-	public function execute($method, array $params = [])
+	public function user()
 	{
-		$command = $this->client->getCommand($method, $params);
-		$result = $this->client->execute($command);
-		return $result;
+		if (null === $this->user)
+		{
+			$this->user = new User($this->baseSDK);
+		}
+		return $this->user;
 	}
 
 	/**
-	 * @return OauthPlugin
+	 * @return Visit
 	 */
-	private function _getOauthPlugin()
+	public function visit()
 	{
-		return new OauthPlugin([
-			'consumer_key'    => $this->consumerKey,
-			'consumer_secret' => $this->consumerSecret,
-			'token'           => $this->token,
-			'token_secret'    => $this->tokenSecret,
-		]);
+		if (null === $this->visit)
+		{
+			$this->visit = new Visit($this->baseSDK);
+		}
+		return $this->visit;
 	}
 
-	/**
-	 * @return ServiceDescription
-	 */
-	private function _getServiceDescription()
-	{
-		return DocPlanner::factory($this->serviceDescriptionUrl);
-	}
 }
