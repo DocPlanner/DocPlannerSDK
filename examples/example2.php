@@ -8,7 +8,7 @@ require_once('../vendor/autoload.php');
 $dp = new \DocPlanner\SDK\DocPlannerSDK('ConsumerKey', 'ConsumerSecret');
 $dp2 = clone $dp; // clone $dp when is not logged in
 
-$dp->user()->login('EM@IL', 'PASSWORD');
+$dp->user()->requestAccess('EM@IL', 'PASSWORD');
 list($token, $tokenSecret) = array_values($dp->getToken()); // get token data from logged $dp
 // here $dp is logged in, but $dp2 not
 unset($dp); // delete logged in instance of DocPlannerSDK

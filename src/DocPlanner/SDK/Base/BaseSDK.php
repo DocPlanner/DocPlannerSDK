@@ -100,7 +100,10 @@ class BaseSDK
 	public function execute($method, Parameter $parameters = null)
 	{
 		$params = $parameters ? $parameters->all() : [];
-		$parameters->clear();
+		if($parameters instanceof Parameter)
+		{
+			$parameters->clear();
+		}
 		$command = $this->client->getCommand($method, $params);
 		$result = null;
 		try {
@@ -114,7 +117,7 @@ class BaseSDK
 			$response = $e->getResponse();
 			if(400 === $response->getStatusCode() && strstr($response->getMessage(), 'oauth_parameters_absent=oauth_token'))
 			{
-				throw new DPException('You have to be logged in! Use "User::login" or "DocPlannerSDK::setToken" methods!');
+				throw new DPException('You have to be logged in! Use "User::requestAccess" or "DocPlannerSDK::setToken" methods!');
 			}
 			throw $e;
 		}
@@ -124,7 +127,25 @@ class BaseSDK
 			throw new DPException('Unknown error! More info: ' . var_export($result, true));
 		}
 
-		return new Result($result['items']);
+		$items = $result['items'];
+
+		$modelClass = '\DocPlanner\SDK\Model\Doctor\\' . ucfirst(explode('.', $method)[1]);
+		$result = [];
+		foreach ($items as $key => $value)
+		{
+			if(is_array($value))
+			{
+				$value = new $modelClass($value);
+			}
+
+			$result[$key] = $value;
+		}
+
+		if(array_keys($items) === range(0, count($items)-1))
+		{
+			return $result;
+		}
+		return new Result($result);
 	}
 
 	/**

@@ -6,6 +6,7 @@
 namespace DocPlanner\SDK\Core;
 
 use DocPlanner\SDK\Base\CoreBase;
+use DocPlanner\SDK\Base\Result;
 
 /**
  * Class Doctor
@@ -14,14 +15,96 @@ use DocPlanner\SDK\Base\CoreBase;
  */
 class Doctor extends CoreBase
 {
+	/**
+	 * @return \DocPlanner\SDK\Model\Doctor\Categories[]
+	 */
 	public function categories()
 	{
-		return $this->baseSDK->execute('DoctorCategories');
+		$result = $this->baseSDK->execute('doctor.categories');
+		return $result;
 	}
 
-	public function canAddOpinion($doctorId)
+	/**
+	 * @param $doctor_id
+	 *
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\Calendars
+	 */
+	public function calendars($doctor_id)
 	{
-		$this->parameter->add(['doctor_id' => $doctorId]);
-		return $this->baseSDK->execute('DoctorCanAddOpinion', $this->parameter);
+		$this->parameter->add(['doctor_id' => $doctor_id]);
+		$result = $this->baseSDK->execute('doctor.calendars', $this->parameter);
+		return $result;
+	}
+
+	/**
+	 * @param null|string $phrase
+	 * @param null|string $location
+	 * @param null|int    $category_id
+	 * @param null|string $mode
+	 * @param null|float  $lat
+	 * @param null|float  $lon
+	 * @param null|int    $page
+	 *
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\Search
+	 */
+	public function search($phrase = null, $location = null, $category_id = null, $mode = null, $lat = null, $lon = null, $page = null)
+	{
+		$this->parameter->add([
+			'phrase'      => $phrase,
+			'location'    => $location,
+			'category_id' => $category_id,
+			'mode'        => $mode,
+			'lat'         => $lat,
+			'lon'         => $lon,
+			'page'        => $page
+		]);
+		$result = $this->baseSDK->execute('doctor.search', $this->parameter);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\Profile
+	 */
+	public function profile($doctor_id, $lat = null, $lon = null)
+	{
+		$this->parameter->add(['doctor_id' => $doctor_id, 'lat' => $lat, 'lon' => $lon]);
+		$result = $this->baseSDK->execute('doctor.profile', $this->parameter);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\Opinion
+	 */
+	public function opinion($doctor_id, $page = null)
+	{
+		$this->parameter->add(['doctor_id' => $doctor_id, 'page' => $page]);
+		$result = $this->baseSDK->execute('doctor.opinion', $this->parameter);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\CanAddOpinion
+	 */
+	public function canAddOpinion($doctor_id)
+	{
+		$this->parameter->add(['doctor_id' => $doctor_id]);
+		$result = $this->baseSDK->execute('doctor.canAddOpinion', $this->parameter);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\AddOpinion
+	 */
+	public function addOpinion($doctor_id, $comment, $rate, $duration, $device)
+	{
+		$this->parameter->add([
+			'doctor_id' => $doctor_id,
+			'comment'   => $comment,
+			'rate'      => $rate,
+			'duration'  => $duration,
+			'device'    => $device
+		]);
+		$result = $this->baseSDK->execute('doctor.addOpinion', $this->parameter);
+		return $result;
 	}
 }

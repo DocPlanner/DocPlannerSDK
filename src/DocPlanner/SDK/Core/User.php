@@ -11,16 +11,105 @@ use DocPlanner\SDK\Base\Result;
 class User extends CoreBase
 {
 	/**
-	 * @param string $email
-	 * @param string $password
-	 *
-	 * @return Result
+	 * @return Result|\DocPlanner\SDK\Model\User\Register
 	 */
-	public function login($email, $password)
+	public function register($email, $pass)
 	{
-		$this->parameter->add(['email' => $email, 'pass' => $password]);
-		$result = $this->baseSDK->execute('UserRequestAccess', $this->parameter);
+		$this->parameter->add(['email' => $email, 'pass' => $pass]);
+		$result = $this->baseSDK->execute('user.register', $this->parameter);
 		$this->baseSDK->setToken($result->access_token->access_token, $result->access_token->access_token_secret);
 		return $result;
 	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\User\RequestAccess
+	 */
+	public function requestAccess($email = null, $pass = null, $fb_access = null)
+	{
+		$this->parameter->add(['email' => $email, 'pass' => $pass, 'fb_access' => $fb_access]);
+		$result = $this->baseSDK->execute('user.requestAccess', $this->parameter);
+		$this->baseSDK->setToken($result->access_token->access_token, $result->access_token->access_token_secret);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\User\Favorites
+	 */
+	public function favorites($lat = null, $lon = null, $page = null)
+	{
+		$this->parameter->add(['lat' => $lat, 'lon' => $lon, 'page' => $page]);
+		$result = $this->baseSDK->execute('user.favorites', $this->parameter);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\User\ValidatePhone
+	 */
+	public function validatePhone($name, $surname, $phone)
+	{
+		$this->parameter->add(['name' => $name, 'surname' => $surname, 'phone' => $phone]);
+		$result = $this->baseSDK->execute('user.validatePhone', $this->parameter);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\User\CreateWithPhone
+	 */
+	public function createWithPhone($name, $surname, $email, $phone)
+	{
+		$this->parameter->add(['name' => $name, 'surname' => $surname, 'email' => $email, 'phone' => $phone]);
+		$result = $this->baseSDK->execute('user.createWithPhone', $this->parameter);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\User\ConfirmPhone
+	 */
+	public function confirmPhone($process_id, $password)
+	{
+		$this->parameter->add(['process_id' => $process_id, 'password' => $password]);
+		$result = $this->baseSDK->execute('user.confirmPhone', $this->parameter);
+		$this->baseSDK->setToken($result->access_token->access_token, $result->access_token->access_token_secret);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\User\RemoveOpinion
+	 */
+	public function removeOpinion($doctor_id)
+	{
+		$this->parameter->add(['doctor_id' => $doctor_id]);
+		$result = $this->baseSDK->execute('user.removeOpinion', $this->parameter);
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\User\RelatedDoctors
+	 */
+	public function relatedDoctors()
+	{
+		$result = $this->baseSDK->execute('user.relatedDoctors');
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\User\GetSignature
+	 */
+	public function getSignature()
+	{
+		$result = $this->baseSDK->execute('user.getSignature');
+		return $result;
+	}
+
+	/**
+	 * @return Result|\DocPlanner\SDK\Model\User\AddSignature
+	 */
+	public function addSignature($signature)
+	{
+		$this->parameter->add(['signature' => $signature]);
+		$result = $this->baseSDK->execute('user.addSignature', $this->parameter);
+		return $result;
+	}
+
+
 }
