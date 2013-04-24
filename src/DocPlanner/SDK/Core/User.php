@@ -6,7 +6,7 @@
 namespace DocPlanner\SDK\Core;
 
 use DocPlanner\SDK\Base\CoreBase;
-use DocPlanner\SDK\Base\Parameter;
+use DocPlanner\SDK\Base\Result;
 
 class User extends CoreBase
 {
@@ -14,13 +14,13 @@ class User extends CoreBase
 	 * @param string $email
 	 * @param string $password
 	 *
-	 * @return bool
+	 * @return Result
 	 */
 	public function login($email, $password)
 	{
 		$this->parameter->add(['email' => $email, 'pass' => $password]);
 		$result = $this->baseSDK->execute('UserRequestAccess', $this->parameter);
-		$this->baseSDK->setToken($result['access_token']['access_token'], $result['access_token']['access_token_secret']);
+		$this->baseSDK->setToken($result->access_token->access_token, $result->access_token->access_token_secret);
 		return $result;
 	}
 }

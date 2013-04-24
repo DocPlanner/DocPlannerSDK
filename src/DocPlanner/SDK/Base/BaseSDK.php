@@ -124,7 +124,7 @@ class BaseSDK
 			throw new DPException('Unknown error! More info: ' . var_export($result, true));
 		}
 
-		return $result['items'];
+		return new Result($result['items']);
 	}
 
 	/**
