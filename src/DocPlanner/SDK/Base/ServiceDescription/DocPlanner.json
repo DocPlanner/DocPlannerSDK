@@ -4,15 +4,15 @@
 	"baseUrl": "http://local.znanylekarz.pl/api/",
 	"description": "DocPlanner SDK",
 	"operations": {
-		"DoctorCategories": {
+		"doctor.categories": {
 			"httpMethod": "GET",
 			"uri": "?method=doctor.categories",
-			"summary": "Gets a list of categories"
+			"summary": "doctor.categories"
 		},
-		"DoctorCanAddOpinion": {
+		"doctor.calendars": {
 			"httpMethod": "POST",
-			"uri": "?method=doctor.canAddOpinion",
-			"summary": "Can add opinion",
+			"uri": "?method=doctor.calendars",
+			"summary": "doctor.calendars",
 			"parameters": {
 				"doctor_id": {
 					"location": "postField",
@@ -20,16 +20,296 @@
 				}
 			}
 		},
-		"UserRequestAccess": {
+		"doctor.search": {
 			"httpMethod": "POST",
-			"uri": "?method=user.requestAccess",
-			"summary": "Returns access token",
+			"uri": "?method=doctor.search",
+			"summary": "doctor.search",
+			"parameters": {
+				"phrase": {
+					"location": "postField",
+					"type": "string"
+				},
+				"location": {
+					"location": "postField",
+					"type": "string"
+				},
+				"category_id": {
+					"location": "postField",
+					"type": "string"
+				},
+				"mode": {
+					"location": "postField",
+					"type": "string"
+				},
+				"lat": {
+					"location": "postField",
+					"type": "string"
+				},
+				"lon": {
+					"location": "postField",
+					"type": "string"
+				},
+				"page": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"doctor.profile": {
+			"httpMethod": "POST",
+			"uri": "?method=doctor.profile",
+			"summary": "doctor.profile",
+			"parameters": {
+				"doctor_id": {
+					"location": "postField",
+					"type": "string"
+				},
+				"lat": {
+					"location": "postField",
+					"type": "string"
+				},
+				"lon": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"doctor.opinion": {
+			"httpMethod": "POST",
+			"uri": "?method=doctor.opinion",
+			"summary": "doctor.opinion",
+			"parameters": {
+				"doctor_id": {
+					"location": "postField",
+					"type": "string"
+				},
+				"page": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"doctor.canAddOpinion": {
+			"httpMethod": "POST",
+			"uri": "?method=doctor.canAddOpinion",
+			"summary": "doctor.canAddOpinion",
+			"parameters": {
+				"doctor_id": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"doctor.addOpinion": {
+			"httpMethod": "POST",
+			"uri": "?method=doctor.addOpinion",
+			"summary": "doctor.addOpinion",
+			"parameters": {
+				"doctor_id": {
+					"location": "postField",
+					"type": "string"
+				},
+				"comment": {
+					"location": "postField",
+					"type": "string"
+				},
+				"rate": {
+					"location": "postField",
+					"type": "string"
+				},
+				"duration": {
+					"location": "postField",
+					"type": "string"
+				},
+				"device": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"user.register": {
+			"httpMethod": "POST",
+			"uri": "?method=user.register",
+			"summary": "user.register",
 			"parameters": {
 				"email": {
 					"location": "postField",
 					"type": "string"
 				},
 				"pass": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"user.requestAccess": {
+			"httpMethod": "POST",
+			"uri": "?method=user.requestAccess",
+			"summary": "user.requestAccess",
+			"parameters": {
+				"email": {
+					"location": "postField",
+					"type": "string"
+				},
+				"pass": {
+					"location": "postField",
+					"type": "string"
+				},
+				"fb_access": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"user.favorites": {
+			"httpMethod": "POST",
+			"uri": "?method=user.favorites",
+			"summary": "user.favorites",
+			"parameters": {
+				"lat": {
+					"location": "postField",
+					"type": "string"
+				},
+				"lon": {
+					"location": "postField",
+					"type": "string"
+				},
+				"page": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"user.validatePhone": {
+			"httpMethod": "POST",
+			"uri": "?method=user.validatePhone",
+			"summary": "user.validatePhone",
+			"parameters": {
+				"name": {
+					"location": "postField",
+					"type": "string"
+				},
+				"surname": {
+					"location": "postField",
+					"type": "string"
+				},
+				"phone": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"user.createWithPhone": {
+			"httpMethod": "POST",
+			"uri": "?method=user.createWithPhone",
+			"summary": "user.createWithPhone",
+			"parameters": {
+				"name": {
+					"location": "postField",
+					"type": "string"
+				},
+				"surname": {
+					"location": "postField",
+					"type": "string"
+				},
+				"email": {
+					"location": "postField",
+					"type": "string"
+				},
+				"phone": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"user.confirmPhone": {
+			"httpMethod": "POST",
+			"uri": "?method=user.confirmPhone",
+			"summary": "user.confirmPhone",
+			"parameters": {
+				"process_id": {
+					"location": "postField",
+					"type": "string"
+				},
+				"password": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"user.removeOpinion": {
+			"httpMethod": "POST",
+			"uri": "?method=user.removeOpinion",
+			"summary": "user.removeOpinion",
+			"parameters": {
+				"doctor_id": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"user.relatedDoctors": {
+			"httpMethod": "GET",
+			"uri": "?method=user.relatedDoctors",
+			"summary": "user.relatedDoctors"
+		},
+		"user.getSignature": {
+			"httpMethod": "GET",
+			"uri": "?method=user.getSignature",
+			"summary": "user.getSignature"
+		},
+		"user.addSignature": {
+			"httpMethod": "POST",
+			"uri": "?method=user.addSignature",
+			"summary": "user.addSignature",
+			"parameters": {
+				"signature": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"visit.book": {
+			"httpMethod": "POST",
+			"uri": "?method=visit.book",
+			"summary": "visit.book",
+			"parameters": {
+				"visit_id": {
+					"location": "postField",
+					"type": "string"
+				},
+				"name": {
+					"location": "postField",
+					"type": "string"
+				},
+				"surname": {
+					"location": "postField",
+					"type": "string"
+				},
+				"comment": {
+					"location": "postField",
+					"type": "string"
+				},
+				"create_user": {
+					"location": "postField",
+					"type": "string"
+				},
+				"phone": {
+					"location": "postField",
+					"type": "string"
+				},
+				"verify_phone": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"visit.cancel": {
+			"httpMethod": "POST",
+			"uri": "?method=visit.cancel",
+			"summary": "visit.cancel",
+			"parameters": {
+				"visit_id": {
 					"location": "postField",
 					"type": "string"
 				}
