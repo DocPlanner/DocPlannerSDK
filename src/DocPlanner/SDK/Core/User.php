@@ -18,9 +18,9 @@ class User extends CoreBase
 	 */
 	public function login($email, $password)
 	{
-		$params = new Parameter(['email' => $email, 'pass' => $password]);
-		$result = $this->baseSDK->execute('UserRequestAccess', $params)['items'];
+		$this->parameter->add(['email' => $email, 'pass' => $password]);
+		$result = $this->baseSDK->execute('UserRequestAccess', $this->parameter);
 		$this->baseSDK->setToken($result['access_token']['access_token'], $result['access_token']['access_token_secret']);
-		return true;
+		return $result;
 	}
 }

@@ -6,18 +6,22 @@
 namespace DocPlanner\SDK\Core;
 
 use DocPlanner\SDK\Base\CoreBase;
-use DocPlanner\SDK\Base\Parameter;
 
+/**
+ * Class Doctor
+ *
+ * @package DocPlanner\SDK\Core
+ */
 class Doctor extends CoreBase
 {
 	public function categories()
 	{
-		return $this->baseSDK->execute('DoctorCategories')['items'];
+		return $this->baseSDK->execute('DoctorCategories');
 	}
 
 	public function canAddOpinion($doctorId)
 	{
-		$params = new Parameter(['doctor_id' => $doctorId]);
-		return $this->baseSDK->execute('DoctorCanAddOpinion', $params)['items'];
+		$this->parameter->add(['doctor_id' => $doctorId]);
+		return $this->baseSDK->execute('DoctorCanAddOpinion', $this->parameter);
 	}
 }

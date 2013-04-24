@@ -13,10 +13,22 @@ abstract class CoreBase
 	protected $baseSDK;
 
 	/**
-	 * @param BaseSDK $sdk
+	 * @var Parameter
 	 */
-	public function __construct(BaseSDK $sdk)
+	protected $parameter;
+
+	/**
+	 * @var array
+	 */
+	protected $loggedOnly = [];
+
+	/**
+	 * @param BaseSDK   $sdk
+	 * @param Parameter $parameter
+	 */
+	public function __construct(BaseSDK $sdk, Parameter $parameter)
 	{
 		$this->baseSDK = $sdk;
+		$this->parameter = $parameter;
 	}
 }

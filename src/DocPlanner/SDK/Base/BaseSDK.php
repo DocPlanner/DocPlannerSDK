@@ -7,6 +7,8 @@ namespace DocPlanner\SDK\Base;
 
 use DocPlanner\SDK\Base\ServiceDescription\DocPlanner;
 use DocPlanner\SDK\Base\Parameter;
+use Guzzle\Http\Exception\ClientErrorResponseException;
+use Guzzle\Http\Message\Response;
 use Guzzle\Service\Client;
 use Guzzle\Plugin\Oauth\OauthPlugin;
 use Guzzle\Service\Description\ServiceDescription;
@@ -17,6 +19,9 @@ use Guzzle\Service\Description\ServiceDescription;
  */
 class BaseSDK
 {
+	const TOKEN 		= 'token';
+	const TOKEN_SECRET 	= 'token_secret';
+
 	/**
 	 * @var string
 	 */
@@ -69,17 +74,57 @@ class BaseSDK
 	}
 
 	/**
+	 * @return array
+	 */
+	public function getToken()
+	{
+		return [self::TOKEN => $this->token, self::TOKEN_SECRET => $this->tokenSecret];
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function tokenIsSet()
+	{
+		return ($this->token && $this->tokenSecret);
+	}
+
+	/**
 	 * @param                 $method
-	 * @param Parameter|null  $params
+	 * @param Parameter|null  $parameters
 	 *
+	 * @throws \Exception|\Guzzle\Http\Exception\ClientErrorResponseException
+	 * @throws DPException
 	 * @return array|mixed
 	 */
-	public function execute($method, Parameter $params = null)
+	public function execute($method, Parameter $parameters = null)
 	{
-		$params = $params ? $params->all() : [];
+		$params = $parameters ? $parameters->all() : [];
+		$parameters->clear();
 		$command = $this->client->getCommand($method, $params);
-		$result = $this->client->execute($command);
-		return $result;
+		$result = null;
+		try {
+			$result = $this->client->execute($command);
+		}
+		catch(ClientErrorResponseException $e)
+		{
+			/**
+			 * @var Response $response
+			 */
+			$response = $e->getResponse();
+			if(400 === $response->getStatusCode() && strstr($response->getMessage(), 'oauth_parameters_absent=oauth_token'))
+			{
+				throw new DPException('You have to be logged in! Use "User::login" or "DocPlannerSDK::setToken" methods!');
+			}
+			throw $e;
+		}
+
+		if ($result['status'] != 'ok' && $result !== true)
+		{
+			throw new DPException('Unknown error! More info: ' . var_export($result, true));
+		}
+
+		return $result['items'];
 	}
 
 	/**

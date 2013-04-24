@@ -6,6 +6,7 @@
 namespace DocPlanner\SDK;
 
 use DocPlanner\SDK\Base\BaseSDK;
+use DocPlanner\SDK\Base\Parameter;
 use DocPlanner\SDK\Core\Doctor;
 use DocPlanner\SDK\Core\User;
 use DocPlanner\SDK\Core\Visit;
@@ -33,12 +34,18 @@ class DocPlannerSDK
 	protected $baseSDK;
 
 	/**
+	 * @var Base\Parameter
+	 */
+	protected $parameter;
+
+	/**
 	 * @param string $consumerKey
 	 * @param string $consumerSecret
 	 */
 	public function __construct($consumerKey, $consumerSecret)
 	{
 		$this->baseSDK = new BaseSDK($consumerKey, $consumerSecret);
+		$this->parameter = new Parameter();
 	}
 
 	/**
@@ -48,7 +55,7 @@ class DocPlannerSDK
 	{
 		if (null === $this->doctor)
 		{
-			$this->doctor = new Doctor($this->baseSDK);
+			$this->doctor = new Doctor($this->baseSDK, $this->parameter);
 		}
 		return $this->doctor;
 	}
@@ -60,7 +67,7 @@ class DocPlannerSDK
 	{
 		if (null === $this->user)
 		{
-			$this->user = new User($this->baseSDK);
+			$this->user = new User($this->baseSDK, $this->parameter);
 		}
 		return $this->user;
 	}
@@ -72,9 +79,27 @@ class DocPlannerSDK
 	{
 		if (null === $this->visit)
 		{
-			$this->visit = new Visit($this->baseSDK);
+			$this->visit = new Visit($this->baseSDK, $this->parameter);
 		}
 		return $this->visit;
 	}
 
+	/**
+	 * @param $token
+	 * @param $token_secret
+	 *
+	 * @return void
+	 */
+	public function setToken($token, $token_secret)
+	{
+		$this->baseSDK->setToken($token, $token_secret);
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getToken()
+	{
+		return $this->baseSDK->getToken();
+	}
 }
