@@ -123,6 +123,35 @@ class Result implements \ArrayAccess, \Iterator
 	}
 
 	/**
+	 * @return array
+	 */
+	public function toArray()
+	{
+		$result = [];
+		foreach($this->storage as $key => $value)
+		{
+			if ($value instanceof self)
+			{
+				$result[$key] = $value->toArray();
+			}
+			else
+			{
+				$result[$key] = $value;
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function toJson()
+	{
+		return json_encode($this->toArray());
+	}
+
+	/**
 	 * @param $name
 	 *
 	 * @return mixed
