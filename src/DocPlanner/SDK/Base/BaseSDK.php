@@ -145,7 +145,7 @@ class BaseSDK
 		{
 			return $result;
 		}
-		return new Result($result);
+		return new $modelClass($result);
 	}
 
 	/**

@@ -27,7 +27,7 @@ class Doctor extends CoreBase
 	/**
 	 * @param $doctor_id
 	 *
-	 * @return Result|\DocPlanner\SDK\Model\Doctor\Calendars
+	 * @return \DocPlanner\SDK\Model\Doctor\Calendars[]
 	 */
 	public function calendars($doctor_id)
 	{
@@ -83,7 +83,7 @@ class Doctor extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\Doctor\CanAddOpinion
+	 * @return \DocPlanner\SDK\Model\Doctor\CanAddOpinion
 	 */
 	public function canAddOpinion($doctor_id)
 	{
