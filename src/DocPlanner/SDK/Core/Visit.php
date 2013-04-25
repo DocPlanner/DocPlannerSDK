@@ -11,7 +11,15 @@ use DocPlanner\SDK\Base\Result;
 class Visit extends CoreBase
 {
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\Visit\Book
+	 * @param int         $visit_id
+	 * @param string|null $name
+	 * @param string|null $surname
+	 * @param string|null $comment
+	 * @param string|null $create_user
+	 * @param string|null $phone
+	 * @param string|null $verify_phone
+	 *
+	 * @return \DocPlanner\SDK\Model\Visit\Book
 	 */
 	public function book($visit_id, $name = null, $surname = null, $comment = null, $create_user = null, $phone = null, $verify_phone = null)
 	{
@@ -29,7 +37,9 @@ class Visit extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\Visit\Cancel
+	 * @param int $visit_id
+	 *
+	 * @return \DocPlanner\SDK\Model\Visit\Cancel
 	 */
 	public function cancel($visit_id)
 	{

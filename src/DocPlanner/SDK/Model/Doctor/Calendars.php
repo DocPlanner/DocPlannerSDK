@@ -18,7 +18,7 @@ class Calendars extends Result
 	public $email;
 	public $phone;
 	/**
-	 * @var array
+	 * @var Result
 	 */
 	public $visits = [];
 }

@@ -25,7 +25,7 @@ class Doctor extends CoreBase
 	}
 
 	/**
-	 * @param $doctor_id
+	 * @param int $doctor_id
 	 *
 	 * @return \DocPlanner\SDK\Model\Doctor\Calendars[]
 	 */
@@ -45,7 +45,7 @@ class Doctor extends CoreBase
 	 * @param null|float  $lon
 	 * @param null|int    $page
 	 *
-	 * @return Result|\DocPlanner\SDK\Model\Doctor\Search
+	 * @return \DocPlanner\SDK\Model\Doctor\Search[]
 	 */
 	public function search($phrase = null, $location = null, $category_id = null, $mode = null, $lat = null, $lon = null, $page = null)
 	{
@@ -63,7 +63,11 @@ class Doctor extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\Doctor\Profile
+	 * @param int        $doctor_id
+	 * @param null|float $lat
+	 * @param null|float $lon
+	 *
+	 * @return \DocPlanner\SDK\Model\Doctor\Profile
 	 */
 	public function profile($doctor_id, $lat = null, $lon = null)
 	{
@@ -73,7 +77,10 @@ class Doctor extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\Doctor\Opinion
+	 * @param int      $doctor_id
+	 * @param null|int $page
+	 *
+	 * @return \DocPlanner\SDK\Model\Doctor\Opinion[]
 	 */
 	public function opinion($doctor_id, $page = null)
 	{
@@ -83,6 +90,8 @@ class Doctor extends CoreBase
 	}
 
 	/**
+	 * @param int $doctor_id
+	 *
 	 * @return \DocPlanner\SDK\Model\Doctor\CanAddOpinion
 	 */
 	public function canAddOpinion($doctor_id)
@@ -93,7 +102,13 @@ class Doctor extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\Doctor\AddOpinion
+	 * @param int    $doctor_id
+	 * @param string $comment
+	 * @param float  $rate
+	 * @param int    $duration
+	 * @param string $device
+	 *
+	 * @return \DocPlanner\SDK\Model\Doctor\AddOpinion
 	 */
 	public function addOpinion($doctor_id, $comment, $rate, $duration, $device)
 	{

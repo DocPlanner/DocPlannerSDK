@@ -11,7 +11,10 @@ use DocPlanner\SDK\Base\Result;
 class User extends CoreBase
 {
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\Register
+	 * @param string $email
+	 * @param string $pass
+	 *
+	 * @return \DocPlanner\SDK\Model\User\Register
 	 */
 	public function register($email, $pass)
 	{
@@ -22,7 +25,11 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\RequestAccess
+	 * @param null|string $email
+	 * @param null|string $pass
+	 * @param null|string $fb_access
+	 *
+	 * @return \DocPlanner\SDK\Model\User\RequestAccess
 	 */
 	public function requestAccess($email = null, $pass = null, $fb_access = null)
 	{
@@ -33,7 +40,11 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\Favorites
+	 * @param null|float $lat
+	 * @param null|float $lon
+	 * @param null|int   $page
+	 *
+	 * @return \DocPlanner\SDK\Model\User\Favorites
 	 */
 	public function favorites($lat = null, $lon = null, $page = null)
 	{
@@ -43,7 +54,11 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\ValidatePhone
+	 * @param string $name
+	 * @param string $surname
+	 * @param string $phone
+	 *
+	 * @return \DocPlanner\SDK\Model\User\ValidatePhone
 	 */
 	public function validatePhone($name, $surname, $phone)
 	{
@@ -53,7 +68,12 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\CreateWithPhone
+	 * @param string $name
+	 * @param string $surname
+	 * @param string $email
+	 * @param string $phone
+	 *
+	 * @return \DocPlanner\SDK\Model\User\CreateWithPhone
 	 */
 	public function createWithPhone($name, $surname, $email, $phone)
 	{
@@ -63,7 +83,10 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\ConfirmPhone
+	 * @param string $process_id
+	 * @param string $password
+	 *
+	 * @return \DocPlanner\SDK\Model\User\ConfirmPhone
 	 */
 	public function confirmPhone($process_id, $password)
 	{
@@ -74,7 +97,9 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\RemoveOpinion
+	 * @param int $doctor_id
+	 *
+	 * @return \DocPlanner\SDK\Model\User\RemoveOpinion
 	 */
 	public function removeOpinion($doctor_id)
 	{
@@ -84,7 +109,7 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\RelatedDoctors
+	 * @return \DocPlanner\SDK\Model\User\RelatedDoctors
 	 */
 	public function relatedDoctors()
 	{
@@ -93,7 +118,7 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\GetSignature
+	 * @return \DocPlanner\SDK\Model\User\GetSignature[]
 	 */
 	public function getSignature()
 	{
@@ -102,7 +127,9 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return Result|\DocPlanner\SDK\Model\User\AddSignature
+	 * @param string $signature
+	 *
+	 * @return \DocPlanner\SDK\Model\User\AddSignature
 	 */
 	public function addSignature($signature)
 	{

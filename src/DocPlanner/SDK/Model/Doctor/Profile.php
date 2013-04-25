@@ -7,9 +7,8 @@ namespace DocPlanner\SDK\Model\Doctor;
 
 use DocPlanner\SDK\Base\Result;
 
-class Search extends Result
+class Profile extends Result
 {
-	public $test;
 	public $id;
 	public $name;
 	public $surname;
@@ -23,6 +22,10 @@ class Search extends Result
 	/**
 	 * @var Result
 	 */
+	public $opinionStats = [];
+	/**
+	 * @var Result
+	 */
 	public $categories = [];
 	/**
 	 * @var Result
@@ -31,5 +34,5 @@ class Search extends Result
 	/**
 	 * @var Result
 	 */
-	public $visits = [];
+	public $items = [];
 }
