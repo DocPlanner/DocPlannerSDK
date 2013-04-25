@@ -32,14 +32,14 @@ class Result implements \ArrayAccess, \Iterator
 				$this->currentPosition = $key;
 			}
 
-			if(property_exists($this, $key))
-			{
-				$this->$key = $value;
-			}
-
 			if(is_array($value))
 			{
 				$value = new self($value);
+			}
+
+			if(property_exists($this, $key))
+			{
+				$this->$key = $value;
 			}
 
 			$this->storage[$key] = $value;
