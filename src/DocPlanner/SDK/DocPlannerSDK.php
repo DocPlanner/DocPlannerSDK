@@ -13,6 +13,9 @@ use DocPlanner\SDK\Core\Visit;
 
 class DocPlannerSDK
 {
+	const RESULT_TYPE_RESULT_OBJECT = BaseSDK::RESULT_TYPE_RESULT_OBJECT;
+	const RESULT_TYPE_ARRAY = BaseSDK::RESULT_TYPE_ARRAY;
+
 	/**
 	 * @var Doctor
 	 */
@@ -41,10 +44,11 @@ class DocPlannerSDK
 	/**
 	 * @param string $consumerKey
 	 * @param string $consumerSecret
+	 * @param string $resultType
 	 */
-	public function __construct($consumerKey, $consumerSecret)
+	public function __construct($consumerKey, $consumerSecret, $resultType = self::RESULT_TYPE_RESULT_OBJECT)
 	{
-		$this->baseSDK = new BaseSDK($consumerKey, $consumerSecret);
+		$this->baseSDK = new BaseSDK($consumerKey, $consumerSecret, $resultType);
 		$this->parameter = new Parameter();
 	}
 

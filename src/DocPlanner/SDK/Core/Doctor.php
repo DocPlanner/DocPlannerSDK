@@ -16,7 +16,7 @@ use DocPlanner\SDK\Base\Result;
 class Doctor extends CoreBase
 {
 	/**
-	 * @return \DocPlanner\SDK\Model\Doctor\Categories[]
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\Categories[]|array
 	 */
 	public function categories()
 	{
@@ -27,7 +27,7 @@ class Doctor extends CoreBase
 	/**
 	 * @param int $doctor_id
 	 *
-	 * @return \DocPlanner\SDK\Model\Doctor\Calendars[]
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\Calendars[]|array
 	 */
 	public function calendars($doctor_id)
 	{
@@ -45,7 +45,7 @@ class Doctor extends CoreBase
 	 * @param null|float  $lon
 	 * @param null|int    $page
 	 *
-	 * @return \DocPlanner\SDK\Model\Doctor\Search[]
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\Search[]|array
 	 */
 	public function search($phrase = null, $location = null, $category_id = null, $mode = null, $lat = null, $lon = null, $page = null)
 	{
@@ -67,7 +67,7 @@ class Doctor extends CoreBase
 	 * @param null|float $lat
 	 * @param null|float $lon
 	 *
-	 * @return \DocPlanner\SDK\Model\Doctor\Profile
+	 * @return \DocPlanner\SDK\Model\Doctor\Profile|array
 	 */
 	public function profile($doctor_id, $lat = null, $lon = null)
 	{
@@ -80,7 +80,7 @@ class Doctor extends CoreBase
 	 * @param int      $doctor_id
 	 * @param null|int $page
 	 *
-	 * @return \DocPlanner\SDK\Model\Doctor\Opinion[]
+	 * @return Result|\DocPlanner\SDK\Model\Doctor\Opinion[]|array
 	 */
 	public function opinion($doctor_id, $page = null)
 	{
@@ -92,7 +92,7 @@ class Doctor extends CoreBase
 	/**
 	 * @param int $doctor_id
 	 *
-	 * @return \DocPlanner\SDK\Model\Doctor\CanAddOpinion
+	 * @return \DocPlanner\SDK\Model\Doctor\CanAddOpinion|array
 	 */
 	public function canAddOpinion($doctor_id)
 	{
@@ -108,7 +108,7 @@ class Doctor extends CoreBase
 	 * @param int    $duration
 	 * @param string $device
 	 *
-	 * @return \DocPlanner\SDK\Model\Doctor\AddOpinion
+	 * @return \DocPlanner\SDK\Model\Doctor\AddOpinion|array
 	 */
 	public function addOpinion($doctor_id, $comment, $rate, $duration, $device)
 	{

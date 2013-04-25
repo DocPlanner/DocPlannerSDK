@@ -19,7 +19,7 @@ class Visit extends CoreBase
 	 * @param string|null $phone
 	 * @param string|null $verify_phone
 	 *
-	 * @return \DocPlanner\SDK\Model\Visit\Book
+	 * @return \DocPlanner\SDK\Model\Visit\Book|array
 	 */
 	public function book($visit_id, $name = null, $surname = null, $comment = null, $create_user = null, $phone = null, $verify_phone = null)
 	{
@@ -39,7 +39,7 @@ class Visit extends CoreBase
 	/**
 	 * @param int $visit_id
 	 *
-	 * @return \DocPlanner\SDK\Model\Visit\Cancel
+	 * @return \DocPlanner\SDK\Model\Visit\Cancel|array
 	 */
 	public function cancel($visit_id)
 	{

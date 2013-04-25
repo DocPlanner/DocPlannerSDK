@@ -14,13 +14,13 @@ class User extends CoreBase
 	 * @param string $email
 	 * @param string $pass
 	 *
-	 * @return \DocPlanner\SDK\Model\User\Register
+	 * @return \DocPlanner\SDK\Model\User\Register|array
 	 */
 	public function register($email, $pass)
 	{
 		$this->parameter->add(['email' => $email, 'pass' => $pass]);
 		$result = $this->baseSDK->execute('user.register', $this->parameter);
-		$this->baseSDK->setToken($result->access_token->access_token, $result->access_token->access_token_secret);
+		$this->baseSDK->setToken($result['access_token']['access_token'], $result['access_token']['access_token_secret']);
 		return $result;
 	}
 
@@ -29,13 +29,13 @@ class User extends CoreBase
 	 * @param null|string $pass
 	 * @param null|string $fb_access
 	 *
-	 * @return \DocPlanner\SDK\Model\User\RequestAccess
+	 * @return \DocPlanner\SDK\Model\User\RequestAccess|array
 	 */
 	public function requestAccess($email = null, $pass = null, $fb_access = null)
 	{
 		$this->parameter->add(['email' => $email, 'pass' => $pass, 'fb_access' => $fb_access]);
 		$result = $this->baseSDK->execute('user.requestAccess', $this->parameter);
-		$this->baseSDK->setToken($result->access_token->access_token, $result->access_token->access_token_secret);
+		$this->baseSDK->setToken($result['access_token']['access_token'], $result['access_token']['access_token_secret']);
 		return $result;
 	}
 
@@ -44,7 +44,7 @@ class User extends CoreBase
 	 * @param null|float $lon
 	 * @param null|int   $page
 	 *
-	 * @return \DocPlanner\SDK\Model\User\Favorites
+	 * @return \DocPlanner\SDK\Model\User\Favorites|array
 	 */
 	public function favorites($lat = null, $lon = null, $page = null)
 	{
@@ -58,7 +58,7 @@ class User extends CoreBase
 	 * @param string $surname
 	 * @param string $phone
 	 *
-	 * @return \DocPlanner\SDK\Model\User\ValidatePhone
+	 * @return \DocPlanner\SDK\Model\User\ValidatePhone|array
 	 */
 	public function validatePhone($name, $surname, $phone)
 	{
@@ -73,7 +73,7 @@ class User extends CoreBase
 	 * @param string $email
 	 * @param string $phone
 	 *
-	 * @return \DocPlanner\SDK\Model\User\CreateWithPhone
+	 * @return \DocPlanner\SDK\Model\User\CreateWithPhone|array
 	 */
 	public function createWithPhone($name, $surname, $email, $phone)
 	{
@@ -86,20 +86,20 @@ class User extends CoreBase
 	 * @param string $process_id
 	 * @param string $password
 	 *
-	 * @return \DocPlanner\SDK\Model\User\ConfirmPhone
+	 * @return \DocPlanner\SDK\Model\User\ConfirmPhone|array
 	 */
 	public function confirmPhone($process_id, $password)
 	{
 		$this->parameter->add(['process_id' => $process_id, 'password' => $password]);
 		$result = $this->baseSDK->execute('user.confirmPhone', $this->parameter);
-		$this->baseSDK->setToken($result->access_token->access_token, $result->access_token->access_token_secret);
+		$this->baseSDK->setToken($result['access_token']['access_token'], $result['access_token']['access_token_secret']);
 		return $result;
 	}
 
 	/**
 	 * @param int $doctor_id
 	 *
-	 * @return \DocPlanner\SDK\Model\User\RemoveOpinion
+	 * @return \DocPlanner\SDK\Model\User\RemoveOpinion|array
 	 */
 	public function removeOpinion($doctor_id)
 	{
@@ -109,7 +109,7 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return \DocPlanner\SDK\Model\User\RelatedDoctors
+	 * @return \DocPlanner\SDK\Model\User\RelatedDoctors|array
 	 */
 	public function relatedDoctors()
 	{
@@ -118,7 +118,7 @@ class User extends CoreBase
 	}
 
 	/**
-	 * @return \DocPlanner\SDK\Model\User\GetSignature[]
+	 * @return Result|\DocPlanner\SDK\Model\User\GetSignature[]|array
 	 */
 	public function getSignature()
 	{
@@ -129,7 +129,7 @@ class User extends CoreBase
 	/**
 	 * @param string $signature
 	 *
-	 * @return \DocPlanner\SDK\Model\User\AddSignature
+	 * @return \DocPlanner\SDK\Model\User\AddSignature|array
 	 */
 	public function addSignature($signature)
 	{

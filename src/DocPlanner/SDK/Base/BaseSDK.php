@@ -19,8 +19,10 @@ use Guzzle\Service\Description\ServiceDescription;
  */
 class BaseSDK
 {
-	const TOKEN 		= 'token';
-	const TOKEN_SECRET 	= 'token_secret';
+	const TOKEN = 'token';
+	const TOKEN_SECRET = 'token_secret';
+	const RESULT_TYPE_ARRAY = 'array';
+	const RESULT_TYPE_RESULT_OBJECT = 'result';
 
 	/**
 	 * @var string
@@ -43,6 +45,11 @@ class BaseSDK
 	protected $tokenSecret;
 
 	/**
+	 * @var string
+	 */
+	protected $resultType;
+
+	/**
 	 * @var \Guzzle\Service\Client
 	 */
 	protected $client;
@@ -50,14 +57,16 @@ class BaseSDK
 	/**
 	 * @param string $consumerKey
 	 * @param string $consumerSecret
+	 * @param string $resultType
 	 */
-	public function __construct($consumerKey, $consumerSecret)
+	public function __construct($consumerKey, $consumerSecret, $resultType = self::RESULT_TYPE_RESULT_OBJECT)
 	{
 		$this->client = new Client();
 		$this->consumerKey = $consumerKey;
 		$this->consumerSecret = $consumerSecret;
 		$this->client->addSubscriber($this->_getOauthPlugin());
 		$this->client->setDescription($this->_getServiceDescription());
+		$this->resultType = $resultType;
 	}
 
 	/**
@@ -100,22 +109,23 @@ class BaseSDK
 	public function execute($method, Parameter $parameters = null)
 	{
 		$params = $parameters ? $parameters->all() : [];
-		if($parameters instanceof Parameter)
+		if ($parameters instanceof Parameter)
 		{
 			$parameters->clear();
 		}
 		$command = $this->client->getCommand($method, $params);
 		$result = null;
-		try {
+		try
+		{
 			$result = $this->client->execute($command);
 		}
-		catch(ClientErrorResponseException $e)
+		catch (ClientErrorResponseException $e)
 		{
 			/**
 			 * @var Response $response
 			 */
 			$response = $e->getResponse();
-			if(400 === $response->getStatusCode() && strstr($response->getMessage(), 'oauth_parameters_absent=oauth_token'))
+			if (400 === $response->getStatusCode() && strstr($response->getMessage(), 'oauth_parameters_absent=oauth_token'))
 			{
 				throw new DPException('You have to be logged in! Use "User::requestAccess" or "DocPlannerSDK::setToken" methods!');
 			}
@@ -128,24 +138,29 @@ class BaseSDK
 		}
 
 		$items = $result['items'];
-		list($group, $class) = explode('.', $method);
-		$modelClass = '\DocPlanner\SDK\Model\\'.ucfirst($group).'\\' . ucfirst($class);
-		$result = [];
-		foreach ($items as $key => $value)
-		{
-			if(is_array($value))
-			{
-				$value = new $modelClass($value);
-			}
 
-			$result[$key] = $value;
-		}
-
-		if(array_keys($items) === range(0, count($items)-1))
+		switch ($this->resultType)
 		{
-			return $result;
+			case self::RESULT_TYPE_ARRAY:
+				return $items;
+
+			case self::RESULT_TYPE_RESULT_OBJECT:
+				list($group, $class) = explode('.', $method);
+				$modelClass = '\DocPlanner\SDK\Model\\' . ucfirst($group) . '\\' . ucfirst($class);
+				if (array_keys($items) === range(0, count($items) - 1))
+				{
+					$result = [];
+					foreach ($items as $key => $value)
+					{
+						$result[$key] = new $modelClass($value);
+					}
+					return new Result($result);
+				}
+				return new $modelClass($items);
+
+			default:
+				throw new DPException('Unknown result type!');
 		}
-		return new $modelClass($result);
 	}
 
 	/**
