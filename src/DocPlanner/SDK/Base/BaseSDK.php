@@ -128,8 +128,8 @@ class BaseSDK
 		}
 
 		$items = $result['items'];
-
-		$modelClass = '\DocPlanner\SDK\Model\Doctor\\' . ucfirst(explode('.', $method)[1]);
+		list($group, $class) = explode('.', $method);
+		$modelClass = '\DocPlanner\SDK\Model\\'.ucfirst($group).'\\' . ucfirst($class);
 		$result = [];
 		foreach ($items as $key => $value)
 		{
