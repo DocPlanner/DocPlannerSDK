@@ -14,4 +14,7 @@ class Opinion extends Result
 	public $comment;
 	public $user_pic;
 	public $rate;
+	public $doctor_answer;
+	public $doctor_answered_at;
+	public $doctor_name;
 }
