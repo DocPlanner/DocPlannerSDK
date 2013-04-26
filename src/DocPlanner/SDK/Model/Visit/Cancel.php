@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\Visit;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class Cancel
+ * @package DocPlanner\SDK\Model\Visit
+ */
 class Cancel extends Result
 {
 	public $code;

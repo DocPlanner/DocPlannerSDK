@@ -5,8 +5,10 @@
  */
 namespace DocPlanner\SDK\Model\User;
 
-use DocPlanner\SDK\Base\Result;
-
+/**
+ * Class ConfirmPhone
+ * @package DocPlanner\SDK\Model\User
+ */
 class ConfirmPhone extends Register
 {
 

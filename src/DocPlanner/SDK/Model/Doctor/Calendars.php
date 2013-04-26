@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\Doctor;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class Calendars
+ * @package DocPlanner\SDK\Model\Doctor
+ */
 class Calendars extends Result
 {
 	public $id;

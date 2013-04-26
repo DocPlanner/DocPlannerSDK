@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\Doctor;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class Search
+ * @package DocPlanner\SDK\Model\Doctor
+ */
 class Search extends Result
 {
 	public $test;

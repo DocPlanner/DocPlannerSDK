@@ -5,8 +5,10 @@
  */
 namespace DocPlanner\SDK\Model\User;
 
-use DocPlanner\SDK\Base\Result;
-
+/**
+ * Class RequestAccess
+ * @package DocPlanner\SDK\Model\User
+ */
 class RequestAccess extends Register
 {
 

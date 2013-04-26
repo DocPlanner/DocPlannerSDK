@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\Doctor;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class AddOpinion
+ * @package DocPlanner\SDK\Model\Doctor
+ */
 class AddOpinion extends Result
 {
 	public $added;

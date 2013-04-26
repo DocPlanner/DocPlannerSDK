@@ -8,6 +8,10 @@ namespace DocPlanner\SDK\Core;
 use DocPlanner\SDK\Base\CoreBase;
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class User
+ * @package DocPlanner\SDK\Core
+ */
 class User extends CoreBase
 {
 	/**

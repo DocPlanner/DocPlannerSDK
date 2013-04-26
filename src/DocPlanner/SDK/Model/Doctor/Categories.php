@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\Doctor;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class Categories
+ * @package DocPlanner\SDK\Model\Doctor
+ */
 class Categories extends Result
 {
 	public $name;

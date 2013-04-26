@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\Doctor;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class Opinion
+ * @package DocPlanner\SDK\Model\Doctor
+ */
 class Opinion extends Result
 {
 	public $signature;

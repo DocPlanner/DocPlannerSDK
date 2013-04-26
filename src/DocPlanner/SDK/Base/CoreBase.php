@@ -5,6 +5,10 @@
  */
 namespace DocPlanner\SDK\Base;
 
+/**
+ * Class CoreBase
+ * @package DocPlanner\SDK\Base
+ */
 abstract class CoreBase
 {
 	/**

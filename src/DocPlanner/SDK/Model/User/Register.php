@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\User;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class Register
+ * @package DocPlanner\SDK\Model\User
+ */
 class Register extends Result
 {
 	public $name;

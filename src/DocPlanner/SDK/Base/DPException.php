@@ -5,6 +5,10 @@
  */
 namespace DocPlanner\SDK\Base;
 
+/**
+ * Class DPException
+ * @package DocPlanner\SDK\Base
+ */
 class DPException extends \Exception
 {
 

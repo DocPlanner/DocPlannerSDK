@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\User;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class RelatedDoctors
+ * @package DocPlanner\SDK\Model\User
+ */
 class RelatedDoctors extends Result
 {
 	public $id;

@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\Doctor;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class Profile
+ * @package DocPlanner\SDK\Model\Doctor
+ */
 class Profile extends Result
 {
 	public $id;

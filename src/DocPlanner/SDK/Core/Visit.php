@@ -8,6 +8,10 @@ namespace DocPlanner\SDK\Core;
 use DocPlanner\SDK\Base\CoreBase;
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class Visit
+ * @package DocPlanner\SDK\Core
+ */
 class Visit extends CoreBase
 {
 	/**

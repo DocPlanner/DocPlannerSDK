@@ -7,6 +7,10 @@ namespace DocPlanner\SDK\Model\Visit;
 
 use DocPlanner\SDK\Base\Result;
 
+/**
+ * Class Book
+ * @package DocPlanner\SDK\Model\Visit
+ */
 class Book extends Result
 {
 	public $booked;
