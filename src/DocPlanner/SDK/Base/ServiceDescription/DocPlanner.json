@@ -5,9 +5,15 @@
 	"description": "DocPlanner SDK",
 	"operations": {
 		"doctor.categories": {
-			"httpMethod": "GET",
+			"httpMethod": "POST",
 			"uri": "?method=doctor.categories",
-			"summary": "doctor.categories"
+			"summary": "doctor.categories",
+			"parameters": {
+				"phrase": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
 		},
 		"doctor.calendars": {
 			"httpMethod": "POST",
@@ -264,6 +270,17 @@
 			"summary": "user.addSignature",
 			"parameters": {
 				"signature": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"geo.cities": {
+			"httpMethod": "POST",
+			"uri": "?method=geo.cities",
+			"summary": "geo.cities",
+			"parameters": {
+				"phrase": {
 					"location": "postField",
 					"type": "string"
 				}

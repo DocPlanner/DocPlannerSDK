@@ -16,11 +16,14 @@ use DocPlanner\SDK\Base\Result;
 class Doctor extends CoreBase
 {
 	/**
+	 * @param string|null $phrase
+	 *
 	 * @return Result|\DocPlanner\SDK\Model\Doctor\Categories[]|array
 	 */
-	public function categories()
+	public function categories($phrase = null)
 	{
-		$result = $this->baseSDK->execute('doctor.categories');
+		$this->parameter->add(['phrase' => $phrase]);
+		$result = $this->baseSDK->execute('doctor.categories', $this->parameter);
 		return $result;
 	}
 
