@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class DocPlanner\SDK\Core\Visit | Docplanner</title>
+	<title>Class DocPlanner\SDK\Core\Geo | Docplanner</title>
 
 	<script type="text/javascript" src="resources/combined.js?1145318285"></script>
 	<script type="text/javascript" src="elementlist.js?3742624181"></script>
@@ -55,9 +55,9 @@
 			<h3>Classes</h3>
 			<ul>
 				<li><a href="class-DocPlanner.SDK.Core.Doctor.html">Doctor</a></li>
-				<li><a href="class-DocPlanner.SDK.Core.Geo.html">Geo</a></li>
+				<li class="active"><a href="class-DocPlanner.SDK.Core.Geo.html">Geo</a></li>
 				<li><a href="class-DocPlanner.SDK.Core.User.html">User</a></li>
-				<li class="active"><a href="class-DocPlanner.SDK.Core.Visit.html">Visit</a></li>
+				<li><a href="class-DocPlanner.SDK.Core.Visit.html">Visit</a></li>
 			</ul>
 
 
@@ -100,12 +100,12 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Visit</h1>
+	<h1>Class Geo</h1>
 
 
 	<div class="description">
 	
-<p>Class Visit</p>
+<p>Class Geo</p>
 
 	</div>
 
@@ -118,7 +118,7 @@
 		</dd>
 		<dd style="padding-left:30px">
 			<img src="resources/inherit.png" alt="Extended by" />
-<b><span>DocPlanner\SDK\Core\Visit</span></b>			
+<b><span>DocPlanner\SDK\Core\Geo</span></b>			
 			
 			
 		</dd>
@@ -137,25 +137,25 @@
 		<b>Namespace:</b> <a href="namespace-DocPlanner.html">DocPlanner</a>\<a href="namespace-DocPlanner.SDK.html">SDK</a>\<a href="namespace-DocPlanner.SDK.Core.html">Core</a><br />
 		<b>Package:</b> DocPlanner\SDK\Core<br />
 
-		<b>Located at</b> <a href="source-class-DocPlanner.SDK.Core.Visit.html#11-54" title="Go to source code">Core/Visit.php</a><br />
+		<b>Located at</b> <a href="source-class-DocPlanner.SDK.Core.Geo.html#11-28" title="Go to source code">Core/Geo.php</a><br />
 	</div>
 
 
 
 	<table class="summary" id="methods">
 	<caption>Methods summary</caption>
-	<tr data-order="book" id="_book">
+	<tr data-order="cities" id="_cities">
 
 		<td class="attributes"><code>
 			 public 
-			<code><a href="class-DocPlanner.SDK.Model.Visit.Book.html">DocPlanner\SDK\Model\Visit\Book</a></code>|array
+			<code><a href="class-DocPlanner.SDK.Base.Result.html">DocPlanner\SDK\Base\Result</a></code>|<code><a href="class-DocPlanner.SDK.Model.Geo.Cities.html">DocPlanner\SDK\Model\Geo\Cities</a>[]</code>|array
 			
 			</code>
 		</td>
 
 		<td class="name"><div>
-		<a class="anchor" href="#_book">#</a>
-		<code><a href="source-class-DocPlanner.SDK.Core.Visit.html#17-41" title="Go to source code">book</a>( <span>integer <var>$visit_id</var></span>, <span>string|null <var>$name</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$surname</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$comment</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$create_user</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$phone</var> = <span class="php-keyword1">null</span></span>, <span>string|null <var>$verify_phone</var> = <span class="php-keyword1">null</span></span> )</code>
+		<a class="anchor" href="#_cities">#</a>
+		<code><a href="source-class-DocPlanner.SDK.Core.Geo.html#17-27" title="Go to source code">cities</a>( <span>null|string <var>$phrase</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -167,63 +167,13 @@
 
 				<h4>Parameters</h4>
 				<div class="list"><dl>
-					<dt><var>$visit_id</var></dt>
-					<dd><code>integer</code><br>$visit_id</dd>
-					<dt><var>$name</var></dt>
-					<dd><code>string|null</code><br>$name</dd>
-					<dt><var>$surname</var></dt>
-					<dd><code>string|null</code><br>$surname</dd>
-					<dt><var>$comment</var></dt>
-					<dd><code>string|null</code><br>$comment</dd>
-					<dt><var>$create_user</var></dt>
-					<dd><code>string|null</code><br>$create_user</dd>
-					<dt><var>$phone</var></dt>
-					<dd><code>string|null</code><br>$phone</dd>
-					<dt><var>$verify_phone</var></dt>
-					<dd><code>string|null</code><br>$verify_phone</dd>
+					<dt><var>$phrase</var></dt>
+					<dd><code>null|string</code><br>$phrase</dd>
 				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
-					<code><code><a href="class-DocPlanner.SDK.Model.Visit.Book.html">DocPlanner\SDK\Model\Visit\Book</a></code>|array</code><br />
-				</div>
-
-
-
-
-		</div>
-		</div></td>
-	</tr>
-	<tr data-order="cancel" id="_cancel">
-
-		<td class="attributes"><code>
-			 public 
-			<code><a href="class-DocPlanner.SDK.Model.Visit.Cancel.html">DocPlanner\SDK\Model\Visit\Cancel</a></code>|array
-			
-			</code>
-		</td>
-
-		<td class="name"><div>
-		<a class="anchor" href="#_cancel">#</a>
-		<code><a href="source-class-DocPlanner.SDK.Core.Visit.html#43-53" title="Go to source code">cancel</a>( <span>integer <var>$visit_id</var></span> )</code>
-
-		<div class="description short">
-			
-		</div>
-
-		<div class="description detailed hidden">
-			
-
-
-				<h4>Parameters</h4>
-				<div class="list"><dl>
-					<dt><var>$visit_id</var></dt>
-					<dd><code>integer</code><br>$visit_id</dd>
-				</dl></div>
-
-				<h4>Returns</h4>
-				<div class="list">
-					<code><code><a href="class-DocPlanner.SDK.Model.Visit.Cancel.html">DocPlanner\SDK\Model\Visit\Cancel</a></code>|array</code><br />
+					<code><code><a href="class-DocPlanner.SDK.Base.Result.html">DocPlanner\SDK\Base\Result</a></code>|<code><a href="class-DocPlanner.SDK.Model.Geo.Cities.html">DocPlanner\SDK\Model\Geo\Cities</a>[]</code>|array</code><br />
 				</div>
 
 

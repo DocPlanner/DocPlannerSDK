@@ -4,10 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class DocPlanner\SDK\Core\Doctor | DocPlanner SDK</title>
+	<title>Class DocPlanner\SDK\Core\Doctor | Docplanner</title>
 
 	<script type="text/javascript" src="resources/combined.js?1145318285"></script>
-	<script type="text/javascript" src="elementlist.js?3608445620"></script>
+	<script type="text/javascript" src="elementlist.js?3742624181"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -36,6 +36,8 @@
 						<ul>
 				<li><a href="namespace-DocPlanner.SDK.Model.Doctor.html">Doctor</a>
 						</li>
+				<li><a href="namespace-DocPlanner.SDK.Model.Geo.html">Geo</a>
+						</li>
 				<li><a href="namespace-DocPlanner.SDK.Model.User.html">User</a>
 						</li>
 				<li><a href="namespace-DocPlanner.SDK.Model.Visit.html">Visit</a>
@@ -53,6 +55,7 @@
 			<h3>Classes</h3>
 			<ul>
 				<li class="active"><a href="class-DocPlanner.SDK.Core.Doctor.html">Doctor</a></li>
+				<li><a href="class-DocPlanner.SDK.Core.Geo.html">Geo</a></li>
 				<li><a href="class-DocPlanner.SDK.Core.User.html">User</a></li>
 				<li><a href="class-DocPlanner.SDK.Core.Visit.html">Visit</a></li>
 			</ul>
@@ -134,7 +137,7 @@
 		<b>Namespace:</b> <a href="namespace-DocPlanner.html">DocPlanner</a>\<a href="namespace-DocPlanner.SDK.html">SDK</a>\<a href="namespace-DocPlanner.SDK.Core.html">Core</a><br />
 		<b>Package:</b> DocPlanner\SDK\Core<br />
 
-		<b>Located at</b> <a href="source-class-DocPlanner.SDK.Core.Doctor.html#11-125" title="Go to source code">Core/Doctor.php</a><br />
+		<b>Located at</b> <a href="source-class-DocPlanner.SDK.Core.Doctor.html#11-128" title="Go to source code">Core/Doctor.php</a><br />
 	</div>
 
 
@@ -152,7 +155,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_categories">#</a>
-		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#18-25" title="Go to source code">categories</a>( )</code>
+		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#18-28" title="Go to source code">categories</a>( <span>string|null <var>$phrase</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -162,6 +165,11 @@
 			
 
 
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$phrase</var></dt>
+					<dd><code>string|null</code><br>$phrase</dd>
+				</dl></div>
 
 				<h4>Returns</h4>
 				<div class="list">
@@ -185,7 +193,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_calendars">#</a>
-		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#27-37" title="Go to source code">calendars</a>( <span>integer <var>$doctor_id</var></span> )</code>
+		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#30-40" title="Go to source code">calendars</a>( <span>integer <var>$doctor_id</var></span> )</code>
 
 		<div class="description short">
 			
@@ -223,7 +231,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_search">#</a>
-		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#39-63" title="Go to source code">search</a>( <span>null|string <var>$phrase</var> = <span class="php-keyword1">null</span></span>, <span>null|string <var>$location</var> = <span class="php-keyword1">null</span></span>, <span>null|integer <var>$category_id</var> = <span class="php-keyword1">null</span></span>, <span>null|string <var>$mode</var> = <span class="php-keyword1">null</span></span>, <span>null|float <var>$lat</var> = <span class="php-keyword1">null</span></span>, <span>null|float <var>$lon</var> = <span class="php-keyword1">null</span></span>, <span>null|integer <var>$page</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#42-66" title="Go to source code">search</a>( <span>null|string <var>$phrase</var> = <span class="php-keyword1">null</span></span>, <span>null|string <var>$location</var> = <span class="php-keyword1">null</span></span>, <span>null|integer <var>$category_id</var> = <span class="php-keyword1">null</span></span>, <span>null|string <var>$mode</var> = <span class="php-keyword1">null</span></span>, <span>null|float <var>$lat</var> = <span class="php-keyword1">null</span></span>, <span>null|float <var>$lon</var> = <span class="php-keyword1">null</span></span>, <span>null|integer <var>$page</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -273,7 +281,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_profile">#</a>
-		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#65-77" title="Go to source code">profile</a>( <span>integer <var>$doctor_id</var></span>, <span>null|float <var>$lat</var> = <span class="php-keyword1">null</span></span>, <span>null|float <var>$lon</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#68-80" title="Go to source code">profile</a>( <span>integer <var>$doctor_id</var></span>, <span>null|float <var>$lat</var> = <span class="php-keyword1">null</span></span>, <span>null|float <var>$lon</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -315,7 +323,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_opinion">#</a>
-		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#79-90" title="Go to source code">opinion</a>( <span>integer <var>$doctor_id</var></span>, <span>null|integer <var>$page</var> = <span class="php-keyword1">null</span></span> )</code>
+		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#82-93" title="Go to source code">opinion</a>( <span>integer <var>$doctor_id</var></span>, <span>null|integer <var>$page</var> = <span class="php-keyword1">null</span></span> )</code>
 
 		<div class="description short">
 			
@@ -355,7 +363,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_canAddOpinion">#</a>
-		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#92-102" title="Go to source code">canAddOpinion</a>( <span>integer <var>$doctor_id</var></span> )</code>
+		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#95-105" title="Go to source code">canAddOpinion</a>( <span>integer <var>$doctor_id</var></span> )</code>
 
 		<div class="description short">
 			
@@ -393,7 +401,7 @@
 
 		<td class="name"><div>
 		<a class="anchor" href="#_addOpinion">#</a>
-		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#104-124" title="Go to source code">addOpinion</a>( <span>integer <var>$doctor_id</var></span>, <span>string <var>$comment</var></span>, <span>float <var>$rate</var></span>, <span>integer <var>$duration</var></span>, <span>string <var>$device</var></span> )</code>
+		<code><a href="source-class-DocPlanner.SDK.Core.Doctor.html#107-127" title="Go to source code">addOpinion</a>( <span>integer <var>$doctor_id</var></span>, <span>string <var>$comment</var></span>, <span>float <var>$rate</var></span>, <span>integer <var>$duration</var></span>, <span>string <var>$device</var></span> )</code>
 
 		<div class="description short">
 			
@@ -468,7 +476,7 @@
 </div>
 
 	<div id="footer">
-		DocPlanner SDK API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
+		Docplanner API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>
 	</div>
 </div>
 </div>
