@@ -9,6 +9,7 @@ use DocPlanner\SDK\Base\BaseSDK;
 use DocPlanner\SDK\Base\Parameter;
 use DocPlanner\SDK\Core\Doctor;
 use DocPlanner\SDK\Core\User;
+use DocPlanner\SDK\Core\Geo;
 use DocPlanner\SDK\Core\Visit;
 
 class DocPlannerSDK
@@ -25,6 +26,11 @@ class DocPlannerSDK
 	 * @var User
 	 */
 	protected $user;
+
+	/**
+	 * @var Geo
+	 */
+	protected $geo;
 
 	/**
 	 * @var Visit
@@ -74,6 +80,18 @@ class DocPlannerSDK
 			$this->user = new User($this->baseSDK, $this->parameter);
 		}
 		return $this->user;
+	}
+
+	/**
+	 * @return Geo
+	 */
+	public function geo()
+	{
+		if (null === $this->geo)
+		{
+			$this->geo = new Geo($this->baseSDK, $this->parameter);
+		}
+		return $this->geo;
 	}
 
 	/**
