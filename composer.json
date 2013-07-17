@@ -1,5 +1,5 @@
 {
-	"name": "lbarulski/docplanner-sdk",
+	"name": "docplanner/docplanner-sdk",
 	"require": {
 		"php": ">=5.4",
 		"guzzle/guzzle": "3.3.*@dev",
