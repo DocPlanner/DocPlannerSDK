@@ -1,7 +1,7 @@
 {
 	"name": "DocPlannerSDK",
 	"apiVersion": "*",
-	"baseUrl": "http://local.znanylekarz.pl/api/",
+	"baseUrl": "https://www.znanylekarz.pl/api/",
 	"description": "DocPlanner SDK",
 	"operations": {
 		"doctor.categories": {
