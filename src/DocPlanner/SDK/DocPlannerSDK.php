@@ -55,6 +55,7 @@ class DocPlannerSDK
 	public function __construct($consumerKey, $consumerSecret, $resultType = self::RESULT_TYPE_RESULT_OBJECT)
 	{
 		$this->baseSDK = new BaseSDK($consumerKey, $consumerSecret, $resultType);
+		$this->baseSDK->setToken(false, "");
 		$this->parameter = new Parameter();
 	}
 
