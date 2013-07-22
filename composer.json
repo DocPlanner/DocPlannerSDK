@@ -2,9 +2,11 @@
 	"name": "docplanner/docplanner-sdk",
 	"require": {
 		"php": ">=5.4",
-		"guzzle/guzzle": "3.3.*@dev",
-		"guzzle/plugin-oauth": "3.3.*@dev",
+		"guzzle/guzzle": "3.3.1",
 		"symfony/http-foundation": "2.3.*@dev"
+	},
+	"conflict": {
+		"guzzle/guzzle": ">3.3.1"
 	},
 	"authors": [
 		{
