@@ -1,7 +1,7 @@
 {
 	"name": "DocPlannerSDK",
 	"apiVersion": "*",
-	"baseUrl": "https://www.znanylekarz.pl/api/",
+	"baseUrl": "http://local.znanylekarz.pl/api/",
 	"description": "DocPlanner SDK",
 	"operations": {
 		"doctor.categories": {
@@ -316,6 +316,17 @@
 					"type": "string"
 				},
 				"verify_phone": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"visit.details": {
+			"httpMethod": "POST",
+			"uri": "?method=visit.details",
+			"summary": "visit.details",
+			"parameters": {
+				"visit_id": {
 					"location": "postField",
 					"type": "string"
 				}

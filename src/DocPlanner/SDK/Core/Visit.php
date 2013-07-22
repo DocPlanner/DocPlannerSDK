@@ -41,6 +41,18 @@ class Visit extends CoreBase
 	}
 
 	/**
+	 * @param $visit_id
+	 *
+	 * @return \DocPlanner\SDK\Model\Visit\Details|array
+	 */
+	public function details($visit_id)
+	{
+		$this->parameter->add(['visit_id' => $visit_id]);
+		$result = $this->baseSDK->execute('visit.details', $this->parameter);
+		return $result;
+	}
+
+	/**
 	 * @param int $visit_id
 	 *
 	 * @return \DocPlanner\SDK\Model\Visit\Cancel|array
