@@ -8,6 +8,7 @@ namespace DocPlanner\SDK;
 use DocPlanner\SDK\Base\BaseSDK;
 use DocPlanner\SDK\Base\Parameter;
 use DocPlanner\SDK\Core\Doctor;
+use DocPlanner\SDK\Core\Marketing;
 use DocPlanner\SDK\Core\User;
 use DocPlanner\SDK\Core\Geo;
 use DocPlanner\SDK\Core\Visit;
@@ -16,6 +17,11 @@ class DocPlannerSDK
 {
 	const RESULT_TYPE_RESULT_OBJECT = BaseSDK::RESULT_TYPE_RESULT_OBJECT;
 	const RESULT_TYPE_ARRAY = BaseSDK::RESULT_TYPE_ARRAY;
+
+	/**
+	 * @var Marketing
+	 */
+	public $marketing;
 
 	/**
 	 * @var Doctor
@@ -105,6 +111,18 @@ class DocPlannerSDK
 			$this->visit = new Visit($this->baseSDK, $this->parameter);
 		}
 		return $this->visit;
+	}
+
+	/**
+	 * @return Marketing
+	 */
+	public function marketing()
+	{
+		if (null === $this->marketing)
+		{
+			$this->marketing = new Marketing($this->baseSDK, $this->parameter);
+		}
+		return $this->marketing;
 	}
 
 	/**

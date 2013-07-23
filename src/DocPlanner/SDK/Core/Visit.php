@@ -53,6 +53,24 @@ class Visit extends CoreBase
 	}
 
 	/**
+	 * @param int 		$doctor_id
+	 * @param null|int 	$calendar_id
+	 * @param null|bool $show_not_booked
+	 *
+	 * @return Result|\DocPlanner\SDK\Model\Visit\Roster[]|array
+	 */
+	public function roster($doctor_id, $calendar_id = null, $show_not_booked = null)
+	{
+		$this->parameter->add([
+			'doctor_id'       => $doctor_id,
+			'calendar_id'     => $calendar_id,
+			'show_not_booked' => $show_not_booked,
+		]);
+		$result = $this->baseSDK->execute('visit.roster', $this->parameter);
+		return $result;
+	}
+
+	/**
 	 * @param int $visit_id
 	 *
 	 * @return \DocPlanner\SDK\Model\Visit\Cancel|array

@@ -1,7 +1,7 @@
 {
 	"name": "DocPlannerSDK",
 	"apiVersion": "*",
-	"baseUrl": "http://local.znanylekarz.pl/api/",
+	"baseUrl": "https://www.znanylekarz.pl/api/",
 	"description": "DocPlanner SDK",
 	"operations": {
 		"doctor.categories": {
@@ -332,12 +332,53 @@
 				}
 			}
 		},
+		"visit.roster": {
+			"httpMethod": "POST",
+			"uri": "?method=visit.roster",
+			"summary": "visit.roster",
+			"parameters": {
+				"doctor_id": {
+					"location": "postField",
+					"type": "string"
+				},
+				"calendar_id": {
+					"location": "postField",
+					"type": "string"
+				},
+				"show_not_booked": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
 		"visit.cancel": {
 			"httpMethod": "POST",
 			"uri": "?method=visit.cancel",
 			"summary": "visit.cancel",
 			"parameters": {
 				"visit_id": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"marketing.doctorRegistration": {
+			"httpMethod": "POST",
+			"uri": "?method=marketing.doctorRegistration",
+			"summary": "marketing.doctorRegistration",
+			"parameters": {
+				"phone": {
+					"location": "postField",
+					"type": "string"
+				}
+			}
+		},
+		"marketing.createCalendar": {
+			"httpMethod": "POST",
+			"uri": "?method=marketing.createCalendar",
+			"summary": "marketing.createCalendar",
+			"parameters": {
+				"user_id": {
 					"location": "postField",
 					"type": "string"
 				}
