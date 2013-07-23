@@ -147,7 +147,7 @@ class BaseSDK
 			case self::RESULT_TYPE_RESULT_OBJECT:
 				list($group, $class) = explode('.', $method);
 				$modelClass = '\DocPlanner\SDK\Model\\' . ucfirst($group) . '\\' . ucfirst($class);
-				if (array_keys($items) === range(0, count($items) - 1))
+				if (false === in_array(false, array_map('is_numeric', array_keys($items))))
 				{
 					$result = [];
 					foreach ($items as $key => $value)
