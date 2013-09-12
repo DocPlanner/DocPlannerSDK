@@ -11,5 +11,6 @@ namespace DocPlanner\SDK\Model\User;
  */
 class RequestAccess extends Register
 {
-
+	public $have_calendar;
+	public $is_commercial;
 }

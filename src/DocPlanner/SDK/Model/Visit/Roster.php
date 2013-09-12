@@ -12,6 +12,8 @@ use DocPlanner\SDK\Base\Result;
  */
 class Roster extends Result
 {
+	public $id;
+
 	/**
 	 * @var Result
 	 */
