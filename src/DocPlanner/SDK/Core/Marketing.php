@@ -26,13 +26,13 @@ class Marketing extends CoreBase
 	}
 
 	/**
-	 * @param $user_id
+	 * @param $doctor_id
 	 *
 	 * @return \DocPlanner\SDK\Model\Marketing\CreateCalendar|array
 	 */
-	public function createCalendar($user_id)
+	public function createCalendar($doctor_id)
 	{
-		$this->parameter->add(['user_id' => $user_id]);
+		$this->parameter->add(['doctor_id' => $doctor_id]);
 		$result = $this->baseSDK->execute('marketing.createCalendar', $this->parameter);
 		return $result;
 	}

@@ -378,7 +378,7 @@
 			"uri": "?method=marketing.createCalendar",
 			"summary": "marketing.createCalendar",
 			"parameters": {
-				"user_id": {
+				"doctor_id": {
 					"location": "postField",
 					"type": "string"
 				}
