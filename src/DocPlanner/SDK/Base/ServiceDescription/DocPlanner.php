@@ -13,8 +13,8 @@ use Guzzle\Service\Description\ServiceDescription;
  */
 class DocPlanner extends ServiceDescription
 {
-	public static function factory()
+	public static function factory($config = null, array $options = array())
 	{
-		return parent::factory(__DIR__.'/DocPlanner.json');
+		return parent::factory($config ?: __DIR__.'/DocPlanner.json', $options);
 	}
 }
