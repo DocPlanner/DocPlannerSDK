@@ -1,4 +1,4 @@
-#DocPlannerSDK
+#DocPlannerSDK (deprecated, new api: http://znanylekarz.github.io/integrations-api-docs/)
 
 ##Requirements
 - PHP >= 5.4
